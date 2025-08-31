@@ -1,0 +1,229 @@
+/* ======= ページ共通タイトル ======= */
+.title {
+  text-align: center;
+  color: #f1c40f; /* ゴールド */
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+/* ======= フォームレイアウト ======= */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #f1c40f;
+}
+
+/* サモナーネーム入力 */
+.summoner-input {
+  margin-bottom: 12px;
+}
+
+.summoner-input input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #0b1220;
+  color: #e6eef8;
+}
+
+/* ======= トロール人数ボタン ======= */
+.button-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.troll-btn {
+  flex: 1;
+  min-width: 60px;
+  padding: 8px 12px;
+  border: 2px solid #f1c40f;
+  border-radius: 6px;
+  background: transparent;
+  color: #f1c40f;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.troll-btn:hover {
+  background: #f1c40f;
+  color: #0b1220;
+}
+
+.troll-btn.active {
+  background: #f1c40f;
+  color: #0b1220;
+}
+
+/* ======= 提出ボタン ======= */
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #f1c40f;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #0b1220;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: #ffd60a;
+}
+
+/* ======= ベース ======= */
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #0f1724; /* 黒に近い紫 */
+  color: #e6eef8;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #0b1220;
+  padding: 16px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 16px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+}
+
+/* ======= 結果カード（横一列配置） ======= */
+.results-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap; /* 横幅が狭いとき自動で折り返し */
+  margin-top: 20px;
+}
+
+.role-card {
+  flex: 1 1 180px; /* 最小幅180pxで均等配置 */
+  max-width: 200px;
+  background: #1c1c2e;
+  border: 2px solid #f1c40f; /* 黄色い枠 */
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  color: #e6eef8;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.role-card .role {
+  font-weight: bold;
+  color: #f1c40f; /* ゴールド */
+  margin-bottom: 6px;
+}
+
+.role-card .champ-img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.role-card .champ {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.role-card .summoner {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.role-card .troll {
+  font-size: 13px;
+  color: #ccc;
+  margin-bottom: 8px;
+}
+
+/* レアリティバッジ */
+.rarity-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.rarity-badge.common { color: #a3a3a3; }
+.rarity-badge.uncommon { color: #22c55e; }
+.rarity-badge.rare { color: #3b82f6; }
+.rarity-badge.superrare { color: #a855f7; }
+.rarity-badge.ultrarare {
+  color: orange;
+  text-shadow: 0 0 6px gold;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.25) inset;
+}
+
+/* ======= 結果画面アクションボタン ======= */
+.result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.result-actions .btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* 黄色ボタン（もう一度回す） */
+.result-actions .btn-primary {
+  background: #f1c40f;
+  color: #0b1220;
+  border: 2px solid #f1c40f;
+}
+
+.result-actions .btn-primary:hover {
+  background: #ffd60a;
+  border-color: #ffd60a;
+}
+
+/* 黒紫ボタン（トップに戻る） */
+.result-actions .btn-secondary {
+  background: #0b1220;
+  color: #f1c40f;
+  border: 2px solid #f1c40f;
+}
+
+.result-actions .btn-secondary:hover {
+  background: #1c1c2e;
+  border-color: #ffd60a;
+}
+
+
+/* スマホ対応：小さい画面では折り返す */
+@media (max-width: 1000px) {
+  .results-row { flex-wrap: wrap; }
+  .role-card { flex: 1 1 calc(50% - 16px); }
+}
+@media (max-width: 600px) {
+  .role-card { flex: 1 1 100%; }
+}

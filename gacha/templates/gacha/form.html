@@ -1,0 +1,12 @@
+{% extends "gacha/base.html" %}
+{% load static %}
+{% block content %}
+  <section class="container">
+    <h2>サモナーネームを入力</h2>
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">ガチャを回す</button>
+    </form>
+  </section>
+{% endblock %}

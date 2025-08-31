@@ -1,0 +1,30 @@
+{% extends "gacha/base.html" %}
+{% block content %}
+<section class="container">
+<h2>フルパトロール結果</h2>
+<div class="results-row">
+  {% for r in results %}
+  <div class="role-card">
+    <div class="role">{{ r.role }}</div>
+    <img class="champ-img" src="{{ r.champ_img }}" alt="{{ r.champ }}">
+    <div class="champ">{{ r.champ }}</div>
+    <div class="summoner">{{ r.summoner }}</div>
+    <div class="troll">{{ r.troll }}</div>
+    <div class="rarity-badge
+      {% if r.rarity == 'コモン' %}common{% elif r.rarity == 'アンコモン' %}uncommon
+      {% elif r.rarity == 'レア' %}rare{% elif r.rarity == 'スーパーレア' %}superrare
+      {% elif r.rarity == 'ウルトラレア' %}ultrarare{% endif %}">
+      {{ r.rarity }}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+<div class="result-actions">
+  <a href="{% url 'gacha:result' %}" class="btn btn-primary">もう一度回す</a>
+  <a href="{% url 'gacha:index' %}" class="btn btn-secondary">トップに戻る</a>
+</div>
+</section>
+{% endblock %}
+

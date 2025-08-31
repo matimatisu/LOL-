@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="{% static 'gacha/style.css' %}">
+</head>
+<body>
+  <header>
+    <h1>LoL フルパトロールガチャ</h1>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    <p>作成例 — ローカル動作確認用</p>
+  </footer>
+</body>
+</html>

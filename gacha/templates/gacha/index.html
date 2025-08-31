@@ -1,0 +1,63 @@
+{% extends "gacha/base.html" %}
+{% block content %}
+<section class="container">
+  <h2 class="title">PLAYER NAME ENTRY</h2>
+  <h3>STEP 1: チームを編成</h3>
+  <p>5人のプレイヤーの名前を入力してください。<br>
+     縛りプレイ人数を選んで、ガチャを実行できます。</p>
+
+  <!-- フォーム -->
+  <form method="post">
+    {% csrf_token %}
+
+    <!-- 縛りプレイ人数ボタン -->
+    <div class="form-group">
+      <label>縛りプレイ適用人数</label>
+      <div class="button-group">
+        <button type="button" class="troll-btn" data-value="1">1人</button>
+        <button type="button" class="troll-btn" data-value="2">2人</button>
+        <button type="button" class="troll-btn" data-value="3">3人</button>
+        <button type="button" class="troll-btn" data-value="4">4人</button>
+        <button type="button" class="troll-btn" data-value="5">5人</button>
+      </div>
+      <input type="hidden" name="troll_count" id="troll-count" value="1">
+    </div>
+
+    <!-- サモナーネーム入力欄 -->
+    <div class="form-group">
+      {% for i in "12345" %}
+      <div class="summoner-input">
+        <label>{{ i }} PLAYER</label>
+        <input type="text" name="summoner{{ i }}" placeholder="名前を入力..." required>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- ユーミ除外チェックボックス -->
+     <div class="form-group checkbox">
+      {{ form.exclude_yuumi }}
+      {{ form.exclude_yuumi.label }}
+    </div>
+
+
+    <div class="form-group">
+      <button type="submit" class="submit-btn">ガチャを回す</button>
+    </div>
+  </form>
+</section>
+
+<script>
+  // ボタンクリックで troll_count をセット
+  document.querySelectorAll(".troll-btn").forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      document.getElementById("troll-count").value = this.dataset.value;
+
+      // 選択中のボタンにクラスを付与
+      document.querySelectorAll(".troll-btn").forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+    });
+  });
+</script>
+{% endblock %}
+

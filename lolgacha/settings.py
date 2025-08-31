@@ -25,8 +25,14 @@ SECRET_KEY = 'django-insecure-dux+*t*$2w_z08)%r_8k7qjfb!*fnm-68#u1p+hh767%#k2zy+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+import os
+from decouple import config
 
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    config("RENDER_EXTERNAL_HOSTNAME", default=""),
+]
 
 # Application definition
 

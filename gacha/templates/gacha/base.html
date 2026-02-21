@@ -7,14 +7,15 @@
   <link rel="stylesheet" href="{% static 'gacha/style.css' %}">
 </head>
 <body>
-  <header>
-    <h1>LoL フルパトロールガチャ</h1>
-  </header>
   <main>
     {% block content %}{% endblock %}
   </main>
-  <footer>
-    <p>作成例 — ローカル動作確認用</p>
-  </footer>
+<footer class="footer">
+  <a href="https://forms.gle/yBs16DaDygGQbKve9"
+     target="_blank" class="footer-link">
+    お問い合わせ
+  </a>
+  <span>© 2025 フルパトロールガチャ. made in clematis</span>
+</footer>
 </body>
 </html>

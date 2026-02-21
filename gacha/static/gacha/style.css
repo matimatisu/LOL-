@@ -6,6 +6,27 @@
   margin-bottom: 24px;
 }
 
+.footer {
+  display: flex;               /* 横並びにする */
+  justify-content: center;     /* 横方向の中央寄せ */
+  align-items: center;         /* 縦方向の中央寄せ */
+  gap: 20px;                   /* お問い合わせと著作権の間隔 */
+  padding: 20px;
+  background: #0b1220;
+  font-size: 14px;
+  color: #e6eef8;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #f1c40f;              /* 黄色で統一 */
+  font-weight: bold;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
 /* ======= フォームレイアウト ======= */
 .form-group {
   margin-bottom: 20px;

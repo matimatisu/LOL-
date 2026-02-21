@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,19 +21,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
+env = environ.Env(DEBUG=(bool, False))
+env_file = os.path.join(BASE_DIR, '.env')
+env.read_env(env_file)
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-dux+*t*$2w_z08)%r_8k7qjfb!*fnm-68#u1p+hh767%#k2zy+'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-import os
-from decouple import config
+APPENGINE_URL = env('APPENGINE_URL')
+ALLOWED_HOSTS = [APPENGINE_URL]
+CSRF_TRUSTED_ORIGINS = [f'https://{APPENGINE_URL}']
+SECURE_SSL_REDIRECT = True
 
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    config("RENDER_EXTERNAL_HOSTNAME", default=""),
+    "lol-trollgacha.dt.r.appspot.com",
 ]
 
 # Application definition
@@ -80,12 +88,7 @@ WSGI_APPLICATION = 'lolgacha.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {'default': env.db()}
 
 
 # Password validation
@@ -123,6 +126,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
